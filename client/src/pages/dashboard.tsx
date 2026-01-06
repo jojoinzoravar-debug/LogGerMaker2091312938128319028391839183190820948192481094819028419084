@@ -152,6 +152,8 @@ const SectionCard = ({ title, icon: Icon, children, isOpen, isComplete, onToggle
 export default function Dashboard() {
   const [openSection, setOpenSection] = useState<string>("reviewers");
   const [selectedReviewers, setSelectedReviewers] = useState<Reviewer[]>([]);
+  const [customReviewers, setCustomReviewers] = useState<Reviewer[]>([]);
+  const [newCustom, setNewCustom] = useState({ username: "", rank: "" });
   const [generatedLog, setGeneratedLog] = useState("");
 
   const form = useForm<FormData>({
@@ -267,50 +269,86 @@ export default function Dashboard() {
 
         {/* 1. Promotion Team */}
         <SectionCard title="Promotion Team" icon={Users} index={0} isOpen={openSection === "reviewers"} isComplete={isReviewersComplete} onToggle={() => setOpenSection("reviewers")}>
-          <Reorder.Group 
-            axis="y" 
-            values={selectedReviewers} 
-            onReorder={setSelectedReviewers}
-            className="space-y-2"
-          >
-            <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 mb-4">
-              {PRELOADED_USERS.map(user => {
-                const isSelected = selectedReviewers.find(r => r.id === user.id);
-                return (
-                  <motion.button
-                    key={user.id} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-                    onClick={() => toggleReviewer(user)}
-                    className={cn(
-                      "flex flex-col p-3 rounded-xl border transition-all text-left",
-                      isSelected ? "bg-primary border-primary text-black" : "bg-white/5 border-white/5 text-white"
-                    )}
+          <div className="space-y-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 bg-white/5 rounded-2xl border border-white/10">
+              <div className="space-y-1">
+                <label className="text-[10px] uppercase font-bold text-primary/70">Add Custom Promoter</label>
+                <div className="flex gap-2">
+                  <Input 
+                    placeholder="Username" 
+                    value={newCustom.username}
+                    onChange={(e) => setNewCustom(prev => ({ ...prev, username: e.target.value }))}
+                    className="bg-black/40 border-white/10 h-9 rounded-lg text-xs" 
+                  />
+                  <Input 
+                    placeholder="Rank" 
+                    value={newCustom.rank}
+                    onChange={(e) => setNewCustom(prev => ({ ...prev, rank: e.target.value }))}
+                    className="bg-black/40 border-white/10 h-9 rounded-lg text-xs w-24" 
+                  />
+                  <Button 
+                    size="sm" 
+                    className="h-9"
+                    onClick={() => {
+                      if (newCustom.username && newCustom.rank) {
+                        const newUser = { id: `custom-${Date.now()}`, ...newCustom };
+                        setCustomReviewers(prev => [...prev, newUser]);
+                        setSelectedReviewers(prev => [...prev, newUser]);
+                        setNewCustom({ username: "", rank: "" });
+                      }
+                    }}
                   >
-                    <span className="text-xs font-bold truncate">{user.username}</span>
-                    <span className="text-[10px] opacity-70">{user.rank}</span>
-                  </motion.button>
-                );
-              })}
+                    <Plus size={16} />
+                  </Button>
+                </div>
+              </div>
             </div>
 
-            {selectedReviewers.length > 0 && (
-              <div className="space-y-2 pt-4 border-t border-white/10">
-                <label className="text-[10px] uppercase font-bold text-primary tracking-widest block mb-2">Drag to Reorder Team</label>
-                {selectedReviewers.map((user) => (
-                  <Reorder.Item
-                    key={user.id}
-                    value={user}
-                    className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/10 cursor-grab active:cursor-grabbing"
-                  >
-                    <GripVertical size={16} className="text-white/30" />
-                    <div className="flex flex-col">
-                      <span className="text-xs font-bold text-white">{user.username}</span>
-                      <span className="text-[10px] text-white/50">{user.rank}</span>
-                    </div>
-                  </Reorder.Item>
-                ))}
+            <Reorder.Group 
+              axis="y" 
+              values={selectedReviewers} 
+              onReorder={setSelectedReviewers}
+              className="space-y-2"
+            >
+              <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 mb-4">
+                {[...PRELOADED_USERS, ...customReviewers].map(user => {
+                  const isSelected = selectedReviewers.find(r => r.id === user.id);
+                  return (
+                    <motion.button
+                      key={user.id} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+                      onClick={() => toggleReviewer(user)}
+                      className={cn(
+                        "flex flex-col p-3 rounded-xl border transition-all text-left",
+                        isSelected ? "bg-primary border-primary text-black" : "bg-white/5 border-white/5 text-white"
+                      )}
+                    >
+                      <span className="text-xs font-bold truncate">{user.username}</span>
+                      <span className="text-[10px] opacity-70">{user.rank}</span>
+                    </motion.button>
+                  );
+                })}
               </div>
-            )}
-          </Reorder.Group>
+
+              {selectedReviewers.length > 0 && (
+                <div className="space-y-2 pt-4 border-t border-white/10">
+                  <label className="text-[10px] uppercase font-bold text-primary tracking-widest block mb-2">Drag to Reorder Team</label>
+                  {selectedReviewers.map((user) => (
+                    <Reorder.Item
+                      key={user.id}
+                      value={user}
+                      className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/10 cursor-grab active:cursor-grabbing"
+                    >
+                      <GripVertical size={16} className="text-white/30" />
+                      <div className="flex flex-col">
+                        <span className="text-xs font-bold text-white">{user.username}</span>
+                        <span className="text-[10px] text-white/50">{user.rank}</span>
+                      </div>
+                    </Reorder.Item>
+                  ))}
+                </div>
+              )}
+            </Reorder.Group>
+          </div>
         </SectionCard>
 
         {/* 2. Promotee Details */}
