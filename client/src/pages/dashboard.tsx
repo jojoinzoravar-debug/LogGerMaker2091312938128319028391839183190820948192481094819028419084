@@ -188,7 +188,7 @@ export default function Dashboard() {
   const generate = () => {
     const d = formData;
     const rNames = selectedReviewers.map(r => r.username).join(", ");
-    const rRanks = Array.from(new Set(selectedReviewers.map(r => r.rank))).join(", ");
+    const rRanks = selectedReviewers.map(r => r.rank).join(", ");
     
     let log = `Your Username: ${rNames}\n`;
     log += `Your Rank: ${rRanks}\n`;
