@@ -196,12 +196,7 @@ export default function Dashboard() {
     log += `Old Rank - New Rank: ${d.promotee.oldRank} - ${d.promotee.newRank}\n`;
     log += `Reason: ${d.promotee.reason}\n`;
     
-    const factorsText = [
-      d.factors.departments ? `[Departments: ${d.factors.departments}]` : null,
-      d.factors.leaveOfAbsence ? `[LoA: ${d.factors.leaveOfAbsence}]` : null,
-      d.factors.infractionHistory ? `[Infractions: ${d.factors.infractionHistory}]` : null,
-      d.factors.reformationStatus ? `[Reformation: ${d.factors.reformationStatus}]` : null,
-    ].filter(Boolean).join(" ");
+    const factorsText = d.factors.departments;
     
     log += `Factors of Determination: ${factorsText || "[Explain Reason For Promotion]"}\n`;
     log += `--------------\n`;
@@ -273,21 +268,50 @@ export default function Dashboard() {
 
         {/* 1. Promotion Team */}
         <SectionCard title="Promotion Team" icon={Users} index={0} isOpen={openSection === "reviewers"} isComplete={isReviewersComplete} onToggle={() => setOpenSection("reviewers")}>
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
-            {PRELOADED_USERS.map(user => (
-              <motion.button
-                key={user.id} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
-                onClick={() => toggleReviewer(user)}
-                className={cn(
-                  "flex flex-col p-3 rounded-xl border transition-all text-left",
-                  selectedReviewers.find(r => r.id === user.id) ? "bg-primary border-primary text-black" : "bg-white/5 border-white/5 text-white"
-                )}
-              >
-                <span className="text-xs font-bold truncate">{user.username}</span>
-                <span className="text-[10px] opacity-70">{user.rank}</span>
-              </motion.button>
-            ))}
-          </div>
+          <Reorder.Group 
+            axis="y" 
+            values={selectedReviewers} 
+            onReorder={setSelectedReviewers}
+            className="space-y-2"
+          >
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 mb-4">
+              {PRELOADED_USERS.map(user => {
+                const isSelected = selectedReviewers.find(r => r.id === user.id);
+                return (
+                  <motion.button
+                    key={user.id} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
+                    onClick={() => toggleReviewer(user)}
+                    className={cn(
+                      "flex flex-col p-3 rounded-xl border transition-all text-left",
+                      isSelected ? "bg-primary border-primary text-black" : "bg-white/5 border-white/5 text-white"
+                    )}
+                  >
+                    <span className="text-xs font-bold truncate">{user.username}</span>
+                    <span className="text-[10px] opacity-70">{user.rank}</span>
+                  </motion.button>
+                );
+              })}
+            </div>
+
+            {selectedReviewers.length > 0 && (
+              <div className="space-y-2 pt-4 border-t border-white/10">
+                <label className="text-[10px] uppercase font-bold text-primary tracking-widest block mb-2">Drag to Reorder Team</label>
+                {selectedReviewers.map((user) => (
+                  <Reorder.Item
+                    key={user.id}
+                    value={user}
+                    className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/10 cursor-grab active:cursor-grabbing"
+                  >
+                    <GripVertical size={16} className="text-white/30" />
+                    <div className="flex flex-col">
+                      <span className="text-xs font-bold text-white">{user.username}</span>
+                      <span className="text-[10px] text-white/50">{user.rank}</span>
+                    </div>
+                  </Reorder.Item>
+                ))}
+              </div>
+            )}
+          </Reorder.Group>
         </SectionCard>
 
         {/* 2. Promotee Details */}
@@ -306,23 +330,10 @@ export default function Dashboard() {
                 <label className="text-[10px] uppercase font-bold text-muted-foreground">Reason</label>
                 <Input {...register("promotee.reason")} className="bg-black/40 border-white/10 h-11 rounded-xl" />
               </div>
-           </div>
-        </SectionCard>
-
-        {/* 3. Factors of Determination */}
-        <SectionCard title="Factors of Determination" icon={AlertTriangle} index={2} isOpen={openSection === "factors"} isComplete={Object.values(formData.factors).some(v => v)} onToggle={() => setOpenSection("factors")}>
-           <div className="space-y-4">
-              {[
-                { id: "departments", label: "Departments / Ranks" },
-                { id: "leaveOfAbsence", label: "Leave of Absence History" },
-                { id: "infractionHistory", label: "Infraction History" },
-                { id: "reformationStatus", label: "Reformation Status" }
-              ].map(field => (
-                <div key={field.id} className="space-y-1">
-                  <label className="text-[10px] uppercase font-bold text-primary/70">{field.label}</label>
-                  <Textarea {...register(`factors.${field.id}` as any)} placeholder="Explain details..." className="bg-black/40 border-white/10 rounded-xl resize-none min-h-[60px]" />
-                </div>
-              ))}
+              <div className="md:col-span-2 space-y-1">
+                <label className="text-[10px] uppercase font-bold text-primary/70">Factors of Determination</label>
+                <Textarea {...register("factors.departments")} placeholder="Detailed factors for promotion..." className="bg-black/40 border-white/10 rounded-xl resize-none min-h-[100px]" />
+              </div>
            </div>
         </SectionCard>
 
