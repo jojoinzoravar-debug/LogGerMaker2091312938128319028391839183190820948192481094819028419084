@@ -1,0 +1,270 @@
+# **POS PROMPT — Premium Intuitive Promotion Log Generator (GitHub Pages)**
+
+You are building a **luxury-grade, fully animated, highly intuitive static web application** deployable on **GitHub Pages**.
+
+This is a **real internal staff tool**, not a demo or form builder.
+
+A first-time user must understand how to use it **within 10 seconds without instructions**.
+
+---
+
+## **NON-NEGOTIABLE PRINCIPLES**
+
+* Static only (HTML, CSS, JS)
+* GitHub Pages compatible
+* No backend, no auth, no database
+* 60fps animations
+* Zero confusion
+* Guided, step-by-step flow
+* Output must exactly match staff log formatting
+
+---
+
+## **VISUAL & MOTION STANDARD**
+
+* Dark, executive, command-center aesthetic
+* Subtle gradients, depth, glass panels
+* Rounded cards, soft glow accents
+* Motion everywhere:
+
+  * Hover
+  * Focus
+  * Click
+  * Drag
+  * Drop
+  * Section transitions
+* Animations must **communicate meaning**, not decoration
+* Nothing appears abruptly
+
+---
+
+## **APP FLOW (CRITICAL)**
+
+* Sections unlock progressively
+* Only the current task is visually emphasized
+* Completed sections collapse automatically
+* Primary action button is disabled until valid
+
+---
+
+## **PROMOTION TEAM — CORE FEATURE**
+
+### **Preloaded User Pool (Fixed Ranks)**
+
+Each user appears as a **clickable card** with username + rank badge:
+
+```
+opgamercd — BDT
+xDylx_n — BoG
+ishhjgd — CAC
+xEli_te2006 — BDT
+jaysonplaysvieo — BoG
+jojoinzoravar — CoS
+martboy45 — CoS
+Seraphable_sama — PC
+xMist_y — BDT
+XxDarkPrinceXxxx — BoG
+```
+
+---
+
+### **Selection Behavior**
+
+* Clicking a card:
+
+  * Adds the user to a **Selected Order** panel
+  * Locks username + rank together
+  * Assigns an animated order number (1st, 2nd, 3rd…)
+* Selected users:
+
+  * Are **drag-and-drop reorderable**
+  * Reorder with smooth animated transitions
+* Removing a user is one click and reversible
+
+---
+
+### **Custom User**
+
+* Button: **+ Add Custom Reviewer**
+* Modal inputs:
+
+  * Username
+  * Rank
+* Custom users behave **identically** to predefined users
+
+---
+
+## **PROMOTEE DETAILS**
+
+Unlocks after reviewers are selected:
+
+* Their Username
+* Old Rank → New Rank
+
+  * Animated directional arrow
+* Reason (default: `Activity Recognized!`)
+
+---
+
+## **FACTORS OF DETERMINATION (GUIDED WRITING)**
+
+Instead of one textbox:
+
+* Four expandable sections:
+
+  1. Departments / Department Rank(s)
+  2. Leave of Absence
+  3. Infraction History / Status
+  4. Reformation Status
+* Each section:
+
+  * Contains a one-line prompt
+  * Expands on click
+  * Collapses when filled
+
+---
+
+## **ACTIVITY INPUTS (SMART & CLEAN)**
+
+### **Session Activity**
+
+* Co-Hosts
+* Helpers
+* Hardest Workers
+* Patrol Logs
+* Optional extras hidden until needed
+
+### **In-Game Activity**
+
+* Minutes This Month
+* Minutes Last Month or Week
+* Level (auto-appends `+`)
+
+### **Maturity & Professionalism**
+
+* Average Grade
+* Professionalism % (slider)
+* Presence % (slider)
+
+### **Chats**
+
+* Grammar % (slider)
+* Messages count
+
+---
+
+## **DEPARTMENTS & EXTRAS**
+
+Animated toggle pills:
+
+* Overseer Command
+* Intelligence Agency
+* Game Administration
+* Support Agency
+* Community Management
+* Discord Moderation
+* Events Team
+* Certified High Rank
+* Increased Chance of Promotion
+* EoTW
+
+Selected items float upward automatically.
+
+---
+
+## **HISTORY**
+
+Addable entries with animation:
+
+* Punishment type dropdown
+* Count
+* Time ago selector (e.g., `1 Month Ago`)
+* Clean removable list
+
+---
+
+## **APPROVAL**
+
+* Single input
+* Auto-formats to:
+  `Approved by: [text]`
+
+---
+
+## **OUTPUT GENERATOR (ABSOLUTE REQUIREMENT)**
+
+### **Generate Promotion Log**
+
+Primary CTA, disabled until required fields are complete.
+
+### **Output MUST MATCH EXACTLY**
+
+Plain text, no markdown, no emojis unless user typed them:
+
+```
+Your Username: XxDarkPrinceXxxx, ddrtf5, beloxved
+Your Rank: CAC, PC, BOG
+Their Username: Meetgamingyt2002
+Old Rank - New Rank: SI - CP
+Reason: Activity Recognized!
+Factors of Determination: [verbatim input]
+--------------
+Session Activity:
+19 Co-Hosts
+18 Helpers
+41 Hardest Workers
+42 Patrol Logs
+--------------
+In-Game Activity:
+1.4k+ Minutes This Month
+1.4k+ Minutes This Week
+Level 224+
+--------------
+Maturity and Professionalism:
+9.54 Average Grade
+90% Average Professionalism
+90% Average Presence
+--------------
+Chats:
+100% Grammar on Staff Teams
+364+ Messages In Main
+--------------
+Extra and Departments!
+Overseer Command
+--------------
+History:
+1x Game Ban [1 Month Ago]
+Approved by: Every PC+ here.
+```
+
+### **Rules**
+
+* Order preserved
+* Comma-separated usernames and ranks
+* Only include filled sections
+* Divider line must be:
+
+```
+--------------
+```
+
+* Include **Copy to Clipboard** button
+
+---
+
+## **FINAL QUALITY BAR**
+
+This must feel:
+
+* Professional
+* Impossible to misuse
+* Fast
+* Smooth
+* Intuitive
+* Staff-ready
+
+No placeholders.
+No confusion.
+No hobby UI.
+
+---

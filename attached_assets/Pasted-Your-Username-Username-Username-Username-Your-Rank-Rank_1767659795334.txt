@@ -1,0 +1,67 @@
+Your Username: Username, Username, Username
+Your Rank: Rank, Rank, Rank
+Their Username: 
+Old Rank - New Rank: Old Rank --> New Rank
+Reason: Activity Recognized!
+Factors of Determination: [Explain Reason For Promotion]
+* The Factors of Determination must include the following elements:
+  * Departments/Department Rank(s) (or Rank Group, Ex: Management): Explain how the user's department(s) and their position in the department(s) make their activity more impressive.
+  * Leave of Absence: Explain how consistant the user's activity is and how often they are excused from activity standards and how this outlines their dedication.
+  * Infraction History/Infraction Status: Understand and acknowledge any negative history the user may have and try to demonstrate it in a positive fashion.
+  * Reformation Status: Explain how the user has improved from their negative history and how it reflects on their growth and maturity since their previous infractions.
+--------------
+**Session Activity:**
+X Hosts
+X Co-Hosts
+X Supervisions
+X Helpers
+X Hardest Workers
+X Patrol Logs
+X Inspections Hosted
+X Inspections Co-Hosted
+X Inspections Helped
+--------------
+**In-Game Activity:**
+X+ Minutes This Month
+X+ Minutes Last Month
+Level X+
+--------------
+**Maturity and Professionalism:**
+X Average Grade
+X% Average Professionalism
+X% Average Presence
+--------------
+**Chats:**
+X% Grammar on Staff Teams
+X Messages
+X Intel Logs
+--------------
+**Departments & Extra:**
+Intelligence Agency
+Game Administration
+Support Agency
+Community Management
+Overseer Command
+Discord Moderation
+Events Team
+Certified High Rank
+- Increased Chance of Promotion
+X EoTW
+--------------
+**History:**
+X VW [X+ Months Ago]
+X SW [X+ Months Ago]
+X Kick [X+ Months Ago]
+X Mute [X+ Months Ago]
+X Tool-Ban [X+ Months Ago]
+X Server-Ban [X+ Months Ago]
+X Team-Ban [X+ Months Ago]
+X 5m Game-Ban [X+ Months Ago]
+X Game-Ban [X+ Months Ago]
+X Rank-Lock [X+ Months Ago]
+X Demotion [X+ Months Ago]
+X Suspension [X+ Months Ago]
+X Termination [X+ Months Ago]
+X Blacklist [X+ Months Ago]
+
+Approved By: 
