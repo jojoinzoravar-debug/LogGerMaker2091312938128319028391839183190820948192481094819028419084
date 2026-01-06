@@ -228,7 +228,6 @@ export default function Dashboard() {
     log += `**Chats:**\n`;
     log += `${d.chats.grammar}% Grammar on Staff Teams\n`;
     log += `${d.chats.messages} Messages\n`;
-    log += `${d.chats.intelLogs} Intel Logs\n`;
     log += `--------------\n`;
 
     log += `**Departments & Extra:**\n`;
@@ -376,10 +375,6 @@ export default function Dashboard() {
                 <div className="space-y-1">
                   <label className="text-[10px] uppercase font-bold text-primary">Messages</label>
                   <Input type="number" {...register("chats.messages")} className="bg-black/40 border-white/10 h-10 rounded-lg" />
-                </div>
-                <div className="space-y-1">
-                  <label className="text-[10px] uppercase font-bold text-muted-foreground">Intel Logs</label>
-                  <Input type="number" {...register("chats.intelLogs")} className="bg-black/40 border-white/10 h-10 rounded-lg" />
                 </div>
               </div>
               
